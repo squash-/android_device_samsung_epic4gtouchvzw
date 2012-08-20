@@ -12,14 +12,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+#
+# Emulator keyboard configuration file #2.
+#
 
-ifeq ($(TARGET_DEVICE),epic4gtouchvzw)
+touch.deviceType = touchScreen
+touch.orientationAware = 1
 
-ifneq ($(TARGET_SIMULATOR),true)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+keyboard.layout = qwerty
+keyboard.characterMap = qwerty2
+keyboard.orientationAware = 1
+keyboard.builtIn = 1
 
-endif
-
-
+cursor.mode = navigation
+cursor.orientationAware = 1

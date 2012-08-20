@@ -1,4 +1,5 @@
-# Copyright (C) 2010 The Android Open Source Project
+# Copyright (C) 2012 The CyanogenMod Project
+# Copyright (C) 2012 Pawit Pornkitprasan
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH:= $(call my-dir)
+include $(CLEAR_VARS)
 
-ifeq ($(TARGET_DEVICE),epic4gtouchvzw)
+LOCAL_MODULE_TAGS := optional
 
-ifneq ($(TARGET_SIMULATOR),true)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+LOCAL_SRC_FILES := main.cpp
 
-endif
+LOCAL_SHARED_LIBRARIES := libutils libbinder
 
+LOCAL_MODULE := TvOutHack
 
+include $(BUILD_EXECUTABLE)

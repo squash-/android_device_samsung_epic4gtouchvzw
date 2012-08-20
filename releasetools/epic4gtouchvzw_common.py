@@ -1,4 +1,5 @@
-# Copyright (C) 2010 The Android Open Source Project
+#
+# Copyright (C) 2008 The Android Open Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,14 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+import os, sys
 
-ifeq ($(TARGET_DEVICE),epic4gtouchvzw)
+LOCAL_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+RELEASETOOLS_DIR = os.path.abspath(os.path.join(LOCAL_DIR, '../../../build/tools/releasetools'))
 
-ifneq ($(TARGET_SIMULATOR),true)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
+# Add releasetools directory to python path
+sys.path.append(RELEASETOOLS_DIR)
 
-endif
+from common import *
 
-
+def load_module_from_file(module_name, filename):
+    import imp
+    f = open(filename, 'r')
+    module = imp.load_module(module_name, f, filename, ('', 'U', 1))
+    f.close()
+    return module

@@ -12,14 +12,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+#
+# Input Device Configuration File for the Atmel Maxtouch touch screen.
+#
+# These calibration values are derived from empirical measurements
+# and may not be appropriate for use with other touch screens.
+# Refer to the input device configuration documentation for more details.
+#
 
-ifeq ($(TARGET_DEVICE),epic4gtouchvzw)
-
-ifneq ($(TARGET_SIMULATOR),true)
-include $(call all-makefiles-under,$(LOCAL_PATH))
-endif
-
-endif
-
-
+# Basic Parameters
+touch.deviceType = touchScreen
